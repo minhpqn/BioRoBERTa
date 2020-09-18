@@ -91,6 +91,13 @@ except ftplib.error_perm as e:
 
 files = ftp.nlst()
 
+n_files = len(files)
+logger.info(f"Number of files: {n_files}")
+gz_files = [f for f in files if re.search(r'\.gz$', f)]
+n_gz_files = len(gz_files)
+logger.info(f"Number of tgz files: {n_gz_files}")
+
+i = 0
 for file in files:
     time.sleep(interval)
     try:
@@ -99,7 +106,11 @@ for file in files:
                 get_file_size(target_file, SIZE_UNIT.MB) > MIN_SIZE:
             logger.info(f"Skipped file...{file}")
         else:
-            logger.info("Downloading..." + file)
+            if re.search(r'\.gz$', file):
+                i += 1
+                logger.info(f"Downloading...{file} ({i}/{n_gz_files} (.gz files))")
+            else:
+                logger.info("Downloading..." + file)
             ftp.retrbinary("RETR " + file, open(target_file, "wb").write)
     except ftplib.error_perm as e:
         logger.error("File could not be downloaded " + file)
@@ -109,4 +120,5 @@ ftp.close()
 
 end = datetime.now()
 diff = end - start
-logger.info("All files downloaded for ' + str(diff.seconds) + 's'")
+logger.info(f"All files downloaded for {diff.seconds}s")
+
