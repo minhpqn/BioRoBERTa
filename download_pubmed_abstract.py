@@ -66,16 +66,13 @@ else:
 destination = os.path.join(args.output_dir, path)
 os.makedirs(destination, exist_ok=True)
 
-print(args)
-
 LOG_FILE = os.path.join(destination, "log.txt")
 if os.path.exists(LOG_FILE):
     os.remove(LOG_FILE)
 
 logger = get_logger(LOG_FILE, __name__)
 
-print(args.url)
-
+logger.info(args)
 logger.info(f"Download files from: {args.url}")
 logger.info(f"Host: {host}")
 logger.info(f"Directory: {path}")
