@@ -48,8 +48,6 @@ parser.add_argument("--skip_existing", action="store_true", help="Whether to ski
 parser.add_argument("--output_dir", type=str, default="./data", help="Path to output directory")
 args = parser.parse_args()
 
-
-
 interval = 0.05
 MIN_SIZE = 10
 
