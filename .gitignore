@@ -3,3 +3,5 @@ data/wikitext-103-raw
 data/wikitext-103-raw-v1.zip
 data/ohsumed_within_task_pretraining
 __pycache__
+ohsumed-all.txt
+data/pubmed
