@@ -5,3 +5,9 @@ data/ohsumed_within_task_pretraining
 __pycache__
 ohsumed-all.txt
 data/pubmed
+.DS_Store
+data/ohsumed/ohsumed-all
+data/ohsumed/ohsumed-first-20000-docs
+data/ohsumed/ohsumed_single_23
+models
+*~
