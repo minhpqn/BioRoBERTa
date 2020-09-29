@@ -11,3 +11,8 @@ data/ohsumed/ohsumed-first-20000-docs
 data/ohsumed/ohsumed_single_23
 models
 *~
+cache
+data/pubmed+ohsumed
+output
+runs
+
